@@ -1,0 +1,47 @@
+{
+  "name": "todomvc-cycle",
+  "version": "0.0.0",
+  "author": "Andre Staltz",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:staltz/todomvc-cycle.git"
+  },
+  "license": "MIT",
+  "private": true,
+  "contributors": [
+    {
+      "name": "Frederik Krautwald"
+    },
+    {
+      "name": "Kahlil Lechelt",
+      "email": "hello@kahlil.info"
+    }
+  ],
+  "dependencies": {
+    "@cycle/core": "6.0.0",
+    "@cycle/dom": "8.1.0",
+    "@cycle/isolate": "1.2.x",
+    "@cycle/storage": "^2.0.3",
+    "rx": "4.0.7",
+    "todomvc-app-css": "2.0.3",
+    "todomvc-common": "1.0.1"
+  },
+  "devDependencies": {
+    "babel": "5.8.29",
+    "babelify": "6.2.0",
+    "browserify": "12.0.1",
+    "live-server": "^0.9.0",
+    "mkdirp": "^0.5.1",
+    "npm-run-all": "^1.4.0",
+    "uglify-js": "2.6.1",
+    "watchify": "^3.6.1"
+  },
+  "scripts": {
+    "build-debug": "mkdirp js && browserify src/app.js -t babelify --outfile js/app.js",
+    "watch:js": "mkdirp js && watchify src/app.js -t babelify --outfile js/app.js -dv",
+    "serve": "live-server ./",
+    "uglify": "uglifyjs js/app.js -o js/app.min.js",
+    "build": "npm run build-debug && npm run uglify",
+    "start": "npm-run-all --parallel watch:js serve"
+  }
+}
